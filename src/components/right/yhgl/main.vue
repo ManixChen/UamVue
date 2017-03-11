@@ -12,55 +12,37 @@
       </el-col>
       <el-col :span="20" :offset="1">
         <div class="grid-content section_right">
-          <el-row class="block-col-2">
-            <el-col :span="12">
-              <span class="demonstration">hover 激活</span>
-              <el-dropdown>
-                <span class="el-dropdown-link">
-                  下拉菜单<i class="el-icon-caret-bottom el-icon--right"></i>
-                </span>
-                <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>黄金糕</el-dropdown-item>
-                  <el-dropdown-item>狮子头</el-dropdown-item>
-                  <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                  <el-dropdown-item>双皮奶</el-dropdown-item>
-                  <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </el-col>
-          </el-row>
           <div class="section_title">
-            <el-dropdown>
-              <span class="el-dropdown-link">
-                <i class="el-icon-caret-bottom el-icon--right"></i>创建用户
-              </span>
+            <el-dropdown  @command="handleCommand">
+                <span class="el-icon-setting">所有用户</span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>黄金糕</el-dropdown-item>
-                <el-dropdown-item>狮子头</el-dropdown-item>
-                <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-                <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                <el-dropdown-item command="create">新建用户</el-dropdown-item>
+                <el-dropdown-item command="delete">批量删除用户</el-dropdown-item>
+                <el-dropdown-item command="settings" divided>配置用户权限</el-dropdown-item>
+                <el-dropdown-item command="refresh">刷新</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
           <el-table
-            :data="activeEqupment" style="width: 100%"
+            :data="activeEqupment" style="width: 100%;text-align:left;"
             @selection-change="handleSelectionChange">
             <el-table-column
               type="selection"
               width="55">
             </el-table-column>
-            <el-table-column prop="name" label="用户名" sortable width="180">
+            <el-table-column prop="name"
+                             label="用户名" sortable width="140">
             </el-table-column>
-            <el-table-column prop="groupname" label="隶属用户组" width="160px">
+            <el-table-column prop="groupname"
+                             label="隶属用户组" sortable width="130">
             </el-table-column>
-            <el-table-column prop="status" label="状态" width="160px">
+            <el-table-column prop="status" label="状态" width="160">
             </el-table-column>
-            <el-table-column prop="phone" label="手机" width="200px">
+            <el-table-column prop="phone" label="手机" width="150">
             </el-table-column>
-            <el-table-column prop="bangding" label="绑定">
+            <el-table-column prop="bangding" label="绑定" width='120'>
             </el-table-column>
-            <el-table-column prop="tag" label="操作">
+            <el-table-column prop="tag" label="操作" >
               <template scope="scope">
                 <el-button size="small"
                            @click="dialogTableVisible = true"
@@ -236,6 +218,24 @@
       handleSelectionChange (val) {
         this.multipleSelection = val
       },
+      // 下拉菜单点击事件
+      handleCommand (command) {
+        this.$message('click on item ' + command)
+        switch (command) {
+          case 'create':
+            window.alert(command)
+            break
+          case 'delete':
+            window.alert(command)
+            break
+          case 'settings':
+            window.alert(command)
+            break
+          case 'refresh':
+            window.alert(command)
+            break
+        }
+      },
       filterTag (value, row) {
         console.log('fillTag')
       },
@@ -291,14 +291,14 @@ width:100%;
 height:100%;
 padding:30px 0;
 }
-ul{
+.section_left ul{
 list-style:none;
 width:100%;
 height:100%;
 color:#000;
 font-size:16px;
 }
-ul li{
+.section_left ul li{
 width:100%;
 height:60px;
 }

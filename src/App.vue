@@ -82,8 +82,9 @@ html,body{
 }
 
 .section_title{
-  line-height:45px;
+  line-height:36px;
   padding-left:20px;
+  font-size:14px;
   text-align:left;
   color:#fff;
   background:#D3DCE6;

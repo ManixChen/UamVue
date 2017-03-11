@@ -8,7 +8,9 @@
             <span class="text">Max</span>
             <b class="caret"></b>
           </a>
-          <ul class="dropdown-menu" v-bind:class="{'action' : isSettings, 'dropdown-menu': !isSettings}">
+          <ul class="dropdown-menu"
+              v-on:mouseleave="hidedropDown()"
+              v-bind:class="{'action' : isSettings, 'dropdown-menu': !isSettings}">
             <li>
               <a href="javascript:void(0);">
                 <i class="icon-uamman unvers"></i> 个人设置
@@ -107,6 +109,12 @@
         if (is === this.s0) {
           this.isSettings = !this.isSettings
         }
+      },
+      hidedropDown () {
+        var thises = this
+        setTimeout(function () {
+          thises.isSettings = false
+        }, 2000)
       }
     }
   }
@@ -131,10 +139,16 @@ a {
 }
 {/*头部导航*/}
 #user-nav{
+  width:100%;
   height:50%;
-  padding:3px 0 2px 0;
+}
+#user-nav:after{
+content:"";
+display:table;
+clear:both;
 }
 #user-nav > ul {
+    width:100%;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -143,8 +157,6 @@ a {
     background: #2E363F;
 }
 .navbar .nav {
-    position: relative;
-    left: 0;
     display: block;
     float: left;
     margin: 0 10px 0 0;
@@ -162,6 +174,11 @@ a {
     padding: 9px 13px;
     display: block;
     font-size: 11px;
+    cursor:pointer;
+}
+#user-nav > ul > li > a:hover{
+color:#fff;
+
 }
 #user-nav > ul > li > a > i, #sidebar li a i {
     opacity: .8;
@@ -211,13 +228,19 @@ a {
     clear: both;
     font-weight: normal;
     line-height: 20px;
+    font-size:12px;
     color: #333;
     white-space: nowrap;
     text-align: left;
 }
+.dropdown-menu > li:hover{
+background:#b6b3b3;
+color:#fff
+
+}
 .dropdown-menu .divider {
     height: 1px;
-    margin: 4px 0px;
+    margin: 2px 0px;
     overflow: hidden;
     background-color: #e5e5e5;
     border-bottom: 1px solid #fff;
@@ -227,6 +250,7 @@ a {
 }
 {/*面包屑导航*/}
 #breadcrumb {
+    display:block;
     border-bottom: 1px solid #e3ebed;
     text-align:left;
     padding-left:15px;

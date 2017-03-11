@@ -50,11 +50,11 @@
     <!--第二块区域-->
     <div class="section_two">
       <h3 class="section_title">应用详情</h3>
-      <el-row :gutter="20">
-        <el-col :span="14" :offset="2">
-          <chart :options="polar"></chart>
+      <el-row>
+        <el-col :span="16" >
+          <chart :options="polar" style='width:100%'></chart>
         </el-col>
-        <el-col :span="7">
+        <el-col :span="6" :offset="1">
           <ul class="site-stats">
             <li class="bg_lh"><i class="icon-uamandroid"></i> <strong>1540</strong>
               <small>应用总数</small>
@@ -81,12 +81,12 @@
     <!--第三块区域-->
     <div class="section_three">
       <h3 class="section_title">活动设备</h3>
-      <el-table :data="activeEqupment" style="width: 100%">
+      <el-table :data="activeEqupment" style="width: 100%;text-align:left;">
         <el-table-column prop="date" label="日期" sortable width="180">
         </el-table-column>
-        <el-table-column prop="name" label="持有者" width="160px">
+        <el-table-column prop="name" label="持有者" sortable width="160px">
         </el-table-column>
-        <el-table-column prop="equipment" label="设备" width="160px">
+        <el-table-column prop="equipment" label="设备" sortable width="160px">
         </el-table-column>
         <el-table-column prop="status" label="活动状态" width="200px">
         </el-table-column>
@@ -163,7 +163,7 @@
             data: ['Andoid', 'IOS', 'WPhone', 'PC', 'other']
           },
           grid: {
-            left: '3%',
+            left: '2%',
             right: '4%',
             bottom: '3%',
             containLabel: true
@@ -280,6 +280,7 @@ body,.main,h1{
   position:relative;
   color:#fff;
   padding-top:8px;
+  cursor:pointer;
 }
 .grid-content>i{
   display:block;
@@ -316,6 +317,7 @@ body,.main,h1{
     margin: 0 5px 10px;
     text-align: center;
     width: 42%;
+    min-width:115px;
     padding: 10px 0;
     color: #fff;
     position: relative;
@@ -362,6 +364,9 @@ li [class^="icon-"], li [class*=" icon-"] {
     width: 100%;
     float: left;
 }
+.echarts,.echarts>canvas{
+width:100%;
+}
 {/*section_three*/}
 .section_three{
 }
@@ -386,5 +391,9 @@ li [class^="icon-"], li [class*=" icon-"] {
   .row-bg {
     padding: 10px 0;
     background-color: #f9fafc;
+  }
+
+  .el-pagination{
+  margin:10px 0 20px 0;
   }
 </style>

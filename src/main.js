@@ -5,6 +5,7 @@ import App from './App'
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+
 // {/*主页*/}
 import Mainpage from 'components/right/main/main'
 // {/*用户管理*/}
