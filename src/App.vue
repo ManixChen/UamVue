@@ -89,6 +89,21 @@ html,body{
   color:#fff;
   background:#D3DCE6;
 }
+.el-badge{
+transition:.3s linear;
+}
+.el-badge:hover{
+transform:rotate(360deg);
+}
+.el-icon-setting:before{
+margin-right:10px;
+}
+.el-dropdown-menu__item{
+line-height:30px;
+}
+  .el-pagination{
+  margin:10px 0 20px 0;
+  }
 {/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸 */}
 ::-webkit-scrollbar
 {

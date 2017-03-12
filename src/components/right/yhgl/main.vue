@@ -1,8 +1,18 @@
 <template>
   <div class="main">
     <el-row :gutter="20" height="100%">
-      <el-col :span="3" height="100%">
+      <el-col :span="4" height="100%">
         <div class="grid-content section_left">
+          <div class="section_title">
+            <el-dropdown menu-align='start'  @command="handleCommand">
+              <span class="el-icon-setting">所有用户</span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item command="create_group">新建用户组</el-dropdown-item>
+                <el-dropdown-item command="edit_group" divided>修改用户</el-dropdown-item>
+                <el-dropdown-item command="refresh">刷新</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
           <ul>
             <li v-for="groupvalues in groupdata">
               {{groupvalues.name}}
@@ -10,10 +20,10 @@
           </ul>
         </div>
       </el-col>
-      <el-col :span="20" :offset="1">
+      <el-col :span="20" >
         <div class="grid-content section_right">
           <div class="section_title">
-            <el-dropdown  @command="handleCommand">
+            <el-dropdown menu-align='start'   @command="handleCommand">
                 <span class="el-icon-setting">所有用户</span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="create">新建用户</el-dropdown-item>
@@ -220,19 +230,45 @@
       },
       // 下拉菜单点击事件
       handleCommand (command) {
-        this.$message('click on item ' + command)
+        //  this.$message('click on item ' + command)
         switch (command) {
           case 'create':
-            window.alert(command)
+            this.$notify({
+              title: '创建',
+              message: command,
+              type: 'success'
+            })
             break
           case 'delete':
-            window.alert(command)
+            this.$notify.error({
+              title: '删除',
+              message: command
+            })
             break
           case 'settings':
-            window.alert(command)
+            this.$notify({
+              title: '创建',
+              message: command,
+              type: 'warning'
+            })
             break
           case 'refresh':
-            window.alert(command)
+            this.$notify.info({
+              title: '刷新',
+              message: command
+            })
+            break
+          case 'create_group':
+            this.$notify.info({
+              title: '创建用户组',
+              message: command
+            })
+            break
+          case 'edit_group':
+            this.$notify.info({
+              title: '编辑用户组',
+              message: command
+            })
             break
         }
       },
@@ -286,10 +322,15 @@ body,.main,h1{
   padding-top:20px;
   background:#eee;
 }
+.section_title{
+padding-left:10px;
+}
 .section_left,.section_right{
 width:100%;
 height:100%;
-padding:30px 0;
+margin:20px 0;
+padding:0 0 30px 0;
+border:1px solid #ddd;
 }
 .section_left ul{
 list-style:none;
